@@ -5,10 +5,17 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            
-            
-            
+            <Entry x:Name="PleaseHolder" Text="Enter text" />
+            <Button 
+                    Text="Add" 
+                    Clicked="Button_Clicked" 
+                    Margin="300,550,15,0"
+                    HeightRequest="60" 
+                    WidthRequest="60" 
+                    CornerRadius=" 75" />
         </StackLayout>
+        
     </ScrollView>
+    
 
 </ContentPage>
