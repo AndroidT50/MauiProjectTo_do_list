@@ -2,20 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProject1.MainPage">
-
-    <ScrollView>
-        <StackLayout Padding="20">
-            <Entry x:Name="PleaseHolder" Text="Enter text" />
-            <Button 
-                    Text="Add" 
-                    Clicked="Button_Clicked" 
-                    Margin="300,550,15,0"
-                    HeightRequest="60" 
-                    WidthRequest="60" 
-                    CornerRadius=" 75" />
+    <Grid>
+      
+        <ScrollView >
+            <StackLayout Padding="20">
+                
+                <Frame CornerRadius="5" BorderColor="Gray" Padding="10">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                        <Entry x:Name="PleaseHolder" Placeholder="Введите текст" WidthRequest="238" />
+                        <Button Text="Добавить" Clicked="Button_Clicked"  />
+                    </StackLayout>
+                </Frame>
+                <ListView x:Name="listview" ItemsSource="{Binding Items}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                        <StackLayout>
+                                            <Frame>
+                                                <Label Text="{Binding}" />
+                                            </Frame>
+                                        </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        <!--
+        <StackLayout >
+            <Button Text="+" FontSize="Title"  Clicked="Button_Clicked" Margin="300,650,15,0" HeightRequest="60" WidthRequest="60" CornerRadius=" 75" />
         </StackLayout>
-        
-    </ScrollView>
-    
+        -->
+    </Grid>
 
 </ContentPage>
