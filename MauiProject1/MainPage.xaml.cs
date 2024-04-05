@@ -16,7 +16,8 @@ namespace MauiProject1
         {
             if (!string.IsNullOrEmpty(PleaseHolder.Text))
             {
-                Items.Add(PleaseHolder.Text);
+                //Items.Add(PleaseHolder.Text);
+                Items.Insert(0, PleaseHolder.Text);
                 PleaseHolder.Text = string.Empty;
             }
 

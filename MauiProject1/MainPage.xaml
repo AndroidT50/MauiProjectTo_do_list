@@ -2,37 +2,76 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProject1.MainPage">
-    <Grid>
-      
-        <ScrollView >
-            <StackLayout Padding="20">
-                
+    
+    <Grid RowDefinitions="100,auto,*"
+          ColumnDefinitions=".75*,.25*"
+          Padding="10"
+          RowSpacing="10"
+          ColumnSpacing="10">
+
+        <Image Grid.ColumnSpan="2"
+               Background="Aqua"/>
+        <Entry x:Name="PleaseHolder" Grid.Row="1" Placeholder="Enter Task" />
+        <Button Grid.Row="1" Grid.Column="1" Text="Add" Clicked="Button_Clicked" />
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Deleta" BackgroundColor="Red"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="1">
+                        <Frame>
+                            <Label Text="{Binding}"/>
+                        </Frame>
+                         </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+
+
+
+        <!--
+        <ScrollView Grid.Row="0">
+            <StackLayout>
                 <Frame CornerRadius="5" BorderColor="Gray" Padding="10">
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                         <Entry x:Name="PleaseHolder" Placeholder="Введите текст" WidthRequest="238" />
                         <Button Text="Добавить" Clicked="Button_Clicked"  />
                     </StackLayout>
                 </Frame>
+            </StackLayout>
+        </ScrollView>
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="5">
                 <ListView x:Name="listview" ItemsSource="{Binding Items}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                        <StackLayout>
-                                            <Frame>
-                                                <Label Text="{Binding}" />
-                                            </Frame>
-                                        </StackLayout>
+                       
+                                    <StackLayout>
+                                    <Frame CornerRadius="8"  Padding="10">
+                                        <Label Text="{Binding}" />
+                                    </Frame>
+                                    </StackLayout>
+                               
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
         </ScrollView>
-        <!--
+        
         <StackLayout >
             <Button Text="+" FontSize="Title"  Clicked="Button_Clicked" Margin="300,650,15,0" HeightRequest="60" WidthRequest="60" CornerRadius=" 75" />
         </StackLayout>
         -->
+        
     </Grid>
 
 </ContentPage>
