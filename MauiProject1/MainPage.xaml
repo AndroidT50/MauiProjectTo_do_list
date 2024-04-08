@@ -22,11 +22,21 @@
                                 <SwipeItem Text="Deleta" BackgroundColor="Red"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <Grid Padding="1">
-                        <Frame>
-                            <Label Text="{Binding}"/>
+                        <Frame Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".2*"/>
+                                    <ColumnDefinition Width=".8*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="Aqua">
+                                    <Label Text="Kalendar" Grid.Column="0" Grid.Row="0" />
+                                </Grid>
+                                <VerticalStackLayout Grid.Column="1" Grid.Row="0" Padding="5" VerticalOptions="Center">
+                                    <Label Text="{Binding}" FontSize="Medium" FontAttributes="Bold" />
+                                </VerticalStackLayout>
+                                
+                            </Grid>
                         </Frame>
-                         </Grid>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
