@@ -2,13 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiProject1.MainPage">
-    
+
     <Grid RowDefinitions="100,auto,*"
           ColumnDefinitions=".75*,.25*"
           Padding="10"
           RowSpacing="10"
           ColumnSpacing="10">
-
         <Image Grid.ColumnSpan="2"
                Background="Aqua"/>
         <Entry x:Name="PleaseHolder" Grid.Row="1" Placeholder="Enter Task" />
@@ -19,22 +18,21 @@
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Deleta" BackgroundColor="Red"/>
+                                <SwipeItem Text="Delet" BackgroundColor="Red" Command="{Binding DeleteTaskCommand} CommandParameter ="{Binding .}"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <Frame Margin="5">
+                        <Frame Margin="3" Padding="4.5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width=".2*"/>
-                                    <ColumnDefinition Width=".8*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="Aqua">
-                                    <Label Text="Kalendar" Grid.Column="0" Grid.Row="0" />
+                                <Grid Grid.Column="0" BackgroundColor="Aqua" Padding="0">
+                                    <Label Text="Kalendar" />
                                 </Grid>
-                                <VerticalStackLayout Grid.Column="1" Grid.Row="0" Padding="5" VerticalOptions="Center">
+                                <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
                                     <Label Text="{Binding}" FontSize="Medium" FontAttributes="Bold" />
                                 </VerticalStackLayout>
-                                
                             </Grid>
                         </Frame>
                     </SwipeView>

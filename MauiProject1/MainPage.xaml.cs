@@ -1,11 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿using Network;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MauiProject1
 {
     public partial class MainPage : ContentPage
     {
         public ObservableCollection <string> Items { get; set; } = new ObservableCollection<string>();
-
+        public ICommand DeleteTaskCommand { get; private set; }
         public MainPage()
         {
             InitializeComponent();
@@ -21,6 +23,13 @@ namespace MauiProject1
                 PleaseHolder.Text = string.Empty;
             }
 
+        }
+
+        DeleteTaskCommand = new Command <string>(DeleteTask);
+        private void DeleteTask(string task)
+        {
+            //Items.Clear();
+            Items.Remove(task);
         }
     }
 
