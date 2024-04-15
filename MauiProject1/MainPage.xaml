@@ -12,13 +12,13 @@
                Background="Aqua"/>
         <Entry x:Name="PleaseHolder" Grid.Row="1" Placeholder="Enter Task" />
         <Button Grid.Row="1" Grid.Column="1" Text="Add" Clicked="Button_Clicked" />
-        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}">
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2" x:Name="TaskCollectionView" ItemsSource="{Binding Items}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="{x:Type x:String}">
+                <DataTemplate >
                     <SwipeView>
                         <SwipeView.RightItems>
                             <SwipeItems>
-                                <SwipeItem Text="Delet" BackgroundColor="Red" Command="{Binding DeleteTaskCommand} CommandParameter ="{Binding .}"/>
+                                <SwipeItem Text="Delet" BackgroundColor="Red"  Command="{Binding Source={x:Reference TaskCollectionView}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" />
                             </SwipeItems>
                         </SwipeView.RightItems>
                         <Frame Margin="3" Padding="4.5">
@@ -28,10 +28,18 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" BackgroundColor="Aqua" Padding="0">
-                                    <Label Text="Kalendar" />
+                                    <Label HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Date, StringFormat='{0:dddd}'}" TextColor="Black" FontSize="16" FontAttributes="Bold" />
+                                                
+                                                <Span Text="{Binding Date, StringFormat='{0:dd/MM}'}" TextColor="Gray" FontSize="14" FontAttributes="Italic" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
                                 <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
-                                    <Label Text="{Binding}" FontSize="Medium" FontAttributes="Bold" />
+                                    <Label Text="{Binding Task}" FontSize="Medium" FontAttributes="Bold" />
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
@@ -40,45 +48,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-
-
-
-
-        <!--
-        <ScrollView Grid.Row="0">
-            <StackLayout>
-                <Frame CornerRadius="5" BorderColor="Gray" Padding="10">
-                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                        <Entry x:Name="PleaseHolder" Placeholder="Введите текст" WidthRequest="238" />
-                        <Button Text="Добавить" Clicked="Button_Clicked"  />
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
-        </ScrollView>
-        <ScrollView Grid.Row="1">
-            <StackLayout Padding="5">
-                <ListView x:Name="listview" ItemsSource="{Binding Items}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                       
-                                    <StackLayout>
-                                    <Frame CornerRadius="8"  Padding="10">
-                                        <Label Text="{Binding}" />
-                                    </Frame>
-                                    </StackLayout>
-                               
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-        </ScrollView>
-        
-        <StackLayout >
-            <Button Text="+" FontSize="Title"  Clicked="Button_Clicked" Margin="300,650,15,0" HeightRequest="60" WidthRequest="60" CornerRadius=" 75" />
-        </StackLayout>
-        -->
         
     </Grid>
 
