@@ -27,17 +27,14 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0" BackgroundColor="Aqua" Padding="0">
-                                    <Label HorizontalTextAlignment="Center">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Date, StringFormat='{0:dddd}'}" TextColor="Black" FontSize="16" FontAttributes="Bold" />
-                                                
-                                                <Span Text="{Binding Date, StringFormat='{0:dd/MM}'}" TextColor="Gray" FontSize="14" FontAttributes="Italic" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                <Frame Padding="-5">
+                                    <Grid Grid.Column="0" BackgroundColor="Aqua" Padding="0">
+                                    <VerticalStackLayout Padding="10" Spacing="4" VerticalOptions="Center">
+                                        <Label Text="{Binding Date, StringFormat='{0:dddd}'}" TextColor="Black" FontSize="16"  FontAttributes="Bold"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:dd/MM}'}" TextColor="Gray" FontSize="14"  FontAttributes="Italic"/>
+                                    </VerticalStackLayout>
                                 </Grid>
+                                </Frame>
                                 <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
                                     <Label Text="{Binding Task}" FontSize="Medium" FontAttributes="Bold" />
                                 </VerticalStackLayout>
